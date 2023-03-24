@@ -2,6 +2,7 @@
 
 *.env
 /backend/db/test*
+DS_Store
 
 # Logs
 logs
