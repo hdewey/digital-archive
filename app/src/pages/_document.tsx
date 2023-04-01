@@ -1,4 +1,5 @@
-import { Html, Head, Main, NextScript } from 'next/document'
+import Layout from '@/components/shared/Layout'
+import { Html, Head, Main, NextScript } from 'next/document';
 
 export default function Document() {
   return (

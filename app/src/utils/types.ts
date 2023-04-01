@@ -4,7 +4,7 @@ export type Project = {
   name: string;
   description: string;
   team_bio: string;
-  profile_picture: string;
+  profile_picture: Buffer;
 };
 
 // assets table types

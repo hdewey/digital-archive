@@ -9,16 +9,23 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@chakra-ui/react": "^2.5.5",
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "@fontsource/londrina-solid": "^4.5.11",
+    "@fontsource/urbanist": "^4.5.17",
     "@next/font": "13.1.6",
     "@types/node": "18.11.18",
     "@types/react": "18.0.27",
     "@types/react-dom": "18.0.10",
     "eslint": "8.33.0",
     "eslint-config-next": "13.1.6",
+    "framer-motion": "^10.10.0",
     "next": "13.1.6",
     "pg": "^8.10.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-query": "^3.39.3",
     "typescript": "4.9.5"
   },
   "devDependencies": {

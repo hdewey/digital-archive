@@ -1,10 +1,30 @@
-import '@/styles/globals.css'
-import type { AppProps } from 'next/app'
+import { AppProps } from 'next/app';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { ReactQueryDevtools } from 'react-query/devtools';
+import { ChakraProvider, CSSReset, GlobalStyle } from '@chakra-ui/react';
 
-export default function App({ Component, pageProps }: AppProps) {
+import themes from '@/theme';
+
+// fonts
+import "@fontsource/londrina-solid/400.css";
+import "@fontsource/urbanist/200.css";
+
+import Layout from '@/components/shared/Layout';
+
+function App({ Component, pageProps }: AppProps) {
+  const queryClient = new QueryClient();
+
   return (
-    <>
-        <Component {...pageProps} />
-    </>
-  )
+    <QueryClientProvider client={queryClient}>
+      <ChakraProvider theme={themes}>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </ChakraProvider>
+
+      <ReactQueryDevtools />
+    </QueryClientProvider>
+  );
 }
+
+export default App;

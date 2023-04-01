@@ -1,28 +1,11 @@
-import ProjectGrid from "@/components/landing/ProjectGrid";
 import Header from "@/components/shared/Header";
 import IconBackground from "@/components/shared/IconBackground";
-import { Box, Heading } from "@chakra-ui/react";
-import { useState } from "react";
-import { useProjects } from "../hooks/useProjects";
 
-const PAGE_SIZE = 10;
-
-function ProjectsList() {
-  const [currentPage, setCurrentPage] = useState(1);
-  const [projects, isLoadingProjects, errorProjects] = useProjects();
-
-  const paginatedProjects = Array.isArray(projects) && projects?.slice(
-    (currentPage - 1) * PAGE_SIZE,
-    currentPage * PAGE_SIZE
-  );
+function ProjectDetails() {
 
   return (
     <>
-      <IconBackground />
-
       <Header />
-
-      <ProjectGrid />
 
       {/* <Box zIndex={1}>
         {isLoadingProjects && <div>Loading projects...</div>}
@@ -54,4 +37,4 @@ function ProjectsList() {
   );
 }
 
-export default ProjectsList;
+export default ProjectDetails;
