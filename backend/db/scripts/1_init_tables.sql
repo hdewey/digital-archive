@@ -6,7 +6,8 @@ CREATE TABLE tables.projects (
   name VARCHAR(255) NOT NULL,
   description TEXT,
   team_bio TEXT,
-  profile_picture BYTEA
+  team_name TEXT,
+  profile_picture TEXT
 );
 
 -- Create assets table

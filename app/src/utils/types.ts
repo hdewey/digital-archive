@@ -4,7 +4,8 @@ export type Project = {
   name: string;
   description: string;
   team_bio: string;
-  profile_picture: Buffer;
+  team_name: string;
+  profile_picture: any,
 };
 
 // assets table types
@@ -13,5 +14,5 @@ export type Asset = {
   project_id: number;
   type: string;
   increment: number;
-  data: Buffer;
+  data: any,
 };

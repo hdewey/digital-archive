@@ -11,12 +11,15 @@ export function useProjects() {
   return { projects, isLoading, error };
 }
 
+// Hook to access data for a project
 export function useProject() {
   const router = useRouter();
   const { id } = router.query;
+
   let project_id = parseInt(id as string);
 
   const { data: project, isLoading, error } = useQuery<Project, Error>(['project', project_id ], () => getProject(project_id));
+
   return { project, isLoading, error };
 }
 

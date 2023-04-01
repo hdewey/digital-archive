@@ -10,6 +10,7 @@ const ProjectGrid = () => {
 
   const loaded_projects = projects ?? [];
 
+  // dims for each project, grid dims are specified in templateRows and templateColumns below
   const dimensions = [
     [3, 3],
     [6, 1],

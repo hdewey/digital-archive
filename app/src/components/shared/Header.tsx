@@ -1,5 +1,6 @@
 import { Column, Row } from "@/lib/chakraUtils";
 import { Box, Heading, Text, Image } from "@chakra-ui/react";
+import Link from "next/link";
 
 const Header = () => {
 
@@ -34,16 +35,20 @@ const Header = () => {
               crossAxisAlignment={'flex-end'}
               // width={'58.1%'}
               width={'470px'}
-            >
-              <Box boxSize={"125px"} height={"50px"} > 
-                <Image src={uscLogo} alt='USC IYA' />
-              </Box>
+            > 
+              <Link target={'_blank'} href={'https://iovine-young.usc.edu/'}>
+                <Box boxSize={"125px"} height={"50px"} > 
+                  <Image src={uscLogo} alt='USC IYA' />
+                </Box>
+              </Link>
+          
               <Box>
                 <Text textAlign={'right'} color={'white'} fontSize={'22px'} >{'Academy Projects'}</Text>
               </Box>
             </Row>
-
-            <Heading textShadow={'2.83482px 2.83482px 9.92188px rgba(0, 0, 0, 0.25)'} fontSize={"90.7px"} lineHeight={"85%"} color={'#F0C433'}>{'The Archives'.toUpperCase()}</Heading>
+            <Link href={'/'}>
+              <Heading textShadow={'2.83482px 2.83482px 9.92188px rgba(0, 0, 0, 0.25)'} fontSize={"90.7px"} lineHeight={"85%"} color={'#F0C433'}>{'The Archives'.toUpperCase()}</Heading>
+            </Link>
           </Column>
 
         <Box 
