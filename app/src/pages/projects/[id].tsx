@@ -1,11 +1,19 @@
 import Header from "@/components/shared/Header";
 import IconBackground from "@/components/shared/IconBackground";
+import { useProject } from "@/hooks/useProjects";
+import { Project } from "@/utils/types";
 
 function ProjectDetails() {
+
+  const { project, isLoading: isLoadingProject, error: projectError } = useProject();
+
+  const data = project ?? undefined;
 
   return (
     <>
       <Header />
+
+      
 
       {/* <Box zIndex={1}>
         {isLoadingProjects && <div>Loading projects...</div>}

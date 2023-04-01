@@ -8,13 +8,13 @@ import { useProjects } from "../hooks/useProjects";
 const PAGE_SIZE = 10;
 
 function ProjectsList() {
-  const [currentPage, setCurrentPage] = useState(1);
-  const [projects, isLoadingProjects, errorProjects] = useProjects();
+  // const [currentPage, setCurrentPage] = useState(1);
+  // // const [projects, isLoadingProjects, errorProjects] = useProjects();
 
-  const paginatedProjects = Array.isArray(projects) && projects?.slice(
-    (currentPage - 1) * PAGE_SIZE,
-    currentPage * PAGE_SIZE
-  );
+  // const paginatedProjects = Array.isArray(projects) && projects?.slice(
+  //   (currentPage - 1) * PAGE_SIZE,
+  //   currentPage * PAGE_SIZE
+  // );
 
   return (
     <>

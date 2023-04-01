@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import { Project, Asset } from './types';
 
 const API_BASE_URL = '/api'; // Our API routes are "local" in path to the client.
@@ -22,6 +23,13 @@ export async function getProjects(): Promise<Project[]> {
   const url = `${API_BASE_URL}/projects`;
   const projects = await fetchData<Project[]>(url, 'GET');
   return projects;
+}
+
+// Functions to interact with the Projects API
+export async function getProject(project_id: number): Promise<Project> {
+  const url = `${API_BASE_URL}/projects/${project_id}`;
+  const project = await fetchData<Project>(url, 'GET');
+  return project;
 }
 
 export async function createProject(project: Project): Promise<Project> {
