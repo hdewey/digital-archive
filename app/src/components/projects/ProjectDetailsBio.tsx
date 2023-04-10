@@ -19,8 +19,9 @@ const ProjectDetailsBio = (props: {project: Project | undefined }) => {
         mainAxisAlignment={'center'}
         crossAxisAlignment={'center'}
         width={'100%'}
-        height={'29vh'}
+        height={'23vh'}
         bgColor={'black.500'}
+        userSelect={'none'}
       >
 
         <Row
@@ -30,14 +31,14 @@ const ProjectDetailsBio = (props: {project: Project | undefined }) => {
         >
 
           <Box
-            width={'150px'}
-            height={'150px'}
+            width={'120px'}
+            height={'120px'}
             bgColor={'white.500'}
             borderRadius={'100%'}
           >
             {
               avatarBin ? 
-                  <Image height={'150px'} borderRadius={'100%'} src={`data:image/*;base64,${avatarBin}`} />
+                  <Image height={'120px'} borderRadius={'100%'} src={`data:image/*;base64,${avatarBin}`} />
                 :
                   <Box width={'100%'} height={'100%'}></Box>
             }

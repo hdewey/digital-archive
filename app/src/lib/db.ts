@@ -1,22 +1,24 @@
 import { Pool } from 'pg';
 import { Project, Asset } from '../utils/types';
 
+// Configure postgres connection pool
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL
 });
 
-// Projects table functions
-
+// fetch all projects without assets
 export async function getAllProjects(): Promise<Project[]> {
   const { rows } = await pool.query('SELECT * FROM tables.projects');
   return rows;
 }
 
+// fetch single project without assets
 export async function getProjectById(id: number): Promise<Project> {
   const { rows } = await pool.query('SELECT * FROM tables.projects WHERE id = $1', [id]);
   return rows[0];
 }
 
+// create project
 export async function createProject(
   name: string,
   description: string,
@@ -30,6 +32,7 @@ export async function createProject(
   return rows[0];
 }
 
+// update project
 export async function updateProject(
   id: number,
   name: string,
@@ -44,23 +47,26 @@ export async function updateProject(
   return rows[0];
 }
 
+// delete project
 export async function deleteProject(id: number): Promise<Project> {
   const { rows } = await pool.query('DELETE FROM tables.projects WHERE id = $1 RETURNING *', [id]);
   return rows[0];
 }
 
-// Assets table functions
 
+// get all assets (this shouldn't really ever be used)
 export async function getAllAssets(): Promise<Asset[]> {
   const { rows } = await pool.query('SELECT * FROM tables.ssets');
   return rows;
 }
 
+// get all assets for a given project
 export async function getAssetsByProjectId(projectId: number): Promise<Asset[]> {
   const { rows } = await pool.query('SELECT * FROM tables.assets WHERE project_id = $1', [projectId]);
   return rows;
 }
 
+// create asset for project
 export async function createAsset(
   projectId: number,
   type: string,
@@ -74,6 +80,7 @@ export async function createAsset(
   return rows[0];
 }
 
+// update specified asset
 export async function updateAsset(
   id: number,
   projectId: number,
@@ -88,6 +95,7 @@ export async function updateAsset(
   return rows[0];
 }
 
+// delete a given asset from a project
 export async function deleteAsset(id: number): Promise<Asset> {
   const { rows } = await pool.query('DELETE FROM tables.assets WHERE id = $1 RETURNING *', [id]);
   return rows[0];

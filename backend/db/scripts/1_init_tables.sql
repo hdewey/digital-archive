@@ -3,7 +3,7 @@ CREATE SCHEMA tables;
 -- Create projects table
 CREATE TABLE tables.projects (
   id SERIAL PRIMARY KEY,
-  name VARCHAR(255) NOT NULL,
+  name TEXT NOT NULL,
   description TEXT,
   team_bio TEXT,
   team_name TEXT,

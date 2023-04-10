@@ -1,28 +1,63 @@
+import { useState } from "react";
+
+// chakra components
+import { Box, Heading, Stack, Text } from "@chakra-ui/react";
+
+// custom components
 import ProjectGrid from "@/components/landing/ProjectGrid";
+import Footer from "@/components/shared/Footer";
 import Header from "@/components/shared/Header";
 import IconBackground from "@/components/shared/IconBackground";
-import { Box, Heading } from "@chakra-ui/react";
-import { useState } from "react";
-import { useProjects } from "../hooks/useProjects";
 
-const PAGE_SIZE = 10;
 
 function ProjectsList() {
-  // const [currentPage, setCurrentPage] = useState(1);
-  // // const [projects, isLoadingProjects, errorProjects] = useProjects();
-
-  // const paginatedProjects = Array.isArray(projects) && projects?.slice(
-  //   (currentPage - 1) * PAGE_SIZE,
-  //   currentPage * PAGE_SIZE
-  // );
+  const [ currentFrontEnd, setCurrentFrontEnd ] = useState(0);
 
   return (
     <>
-      <IconBackground />
+      {
+        currentFrontEnd === 0 && (
+          <>
+            <IconBackground />
+            <Header>
+              <Heading color={'white'}>{'Filters...'.toUpperCase()}</Heading>
+            </Header>
+            <ProjectGrid />
+            <ProjectGrid />
+            <ProjectGrid />
+            <Footer />
+          </>
+        )
+      }
 
-      <Header />
+      {
+        currentFrontEnd === 1 && (
+          <>
+          </>
+        )
+      }
 
-      <ProjectGrid />
+      {/* FrontEndToggles */}
+      {/* <Stack
+        position={'absolute'}
+        top={'3vh'}
+        right={'2vw'}
+        zIndex={999}
+      >
+        {[1,2,3].map((_value, index) => {
+          return (
+            <Heading
+              key={index}
+              cursor={'pointer'}
+              color={currentFrontEnd === index ? 'brand.500' : 'white.500'}
+              textDecoration={ currentFrontEnd === index ? 'underline' : 'unset' }
+              onClick={ () => setCurrentFrontEnd(index)}
+            >
+              {index}
+            </Heading>
+          )
+        })}
+      </Stack> */}
 
       {/* <Box zIndex={1}>
         {isLoadingProjects && <div>Loading projects...</div>}

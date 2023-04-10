@@ -1,5 +1,8 @@
 FROM postgres:alpine
+
 COPY scripts/*.sql /docker-entrypoint-initdb.d/
+
+COPY test test
 
 # add SQL scripts to start init
 ADD scripts/1_init_tables.sql /docker-entrypoint-initdb.d

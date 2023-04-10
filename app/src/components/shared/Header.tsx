@@ -1,13 +1,9 @@
 import { Column, Row } from "@/lib/chakraUtils";
-import { Box, Heading, Text, Image } from "@chakra-ui/react";
+import { Box, Heading, Text, Image, keyframes, usePrefersReducedMotion } from "@chakra-ui/react";
 import Link from "next/link";
+import { ReactNode, useState } from "react";
 
-const Header = () => {
-
-  const filters = false;
-  
-  const uscLogo = '/assets/brand/usc-tag.png';
-
+const Header = ({children}: {children: ReactNode}) => {
 
   return (
     <>
@@ -18,6 +14,7 @@ const Header = () => {
         width={'100vw'}
         height={'15vh'}
         mt={5}
+        mb={10}
         zIndex={1}
       >
         <Row 
@@ -36,11 +33,7 @@ const Header = () => {
               // width={'58.1%'}
               width={'470px'}
             > 
-              <Link target={'_blank'} href={'https://iovine-young.usc.edu/'}>
-                <Box boxSize={"125px"} height={"50px"} > 
-                  <Image src={uscLogo} alt='USC IYA' />
-                </Box>
-              </Link>
+              <USCImage />
           
               <Box>
                 <Text textAlign={'right'} color={'white'} fontSize={'22px'} >{'Academy Projects'}</Text>
@@ -60,7 +53,9 @@ const Header = () => {
             mainAxisAlignment={'center'}
             crossAxisAlignment={'center'}
           >
-            <Heading color={'white'}>{'Filters...'.toUpperCase()}</Heading>
+            {
+              children
+            }          
           </Row>
         </Box>
 
@@ -71,3 +66,56 @@ const Header = () => {
 };
 
 export default Header;
+
+// const Dots = ( props: { isVisible: boolean }) => {
+//   const prefersReducedMotion = usePrefersReducedMotion();
+//   const spiral = keyframes`
+//     from {
+//       transform: rotate(0deg) translate(0, 0);
+//     }
+//     to {
+//       transform: rotate(360deg) translate(80px) rotate(-720deg);
+//     }
+//   `;
+//   return (
+//     <Box
+//       display={props.isVisible ? "block" : "none"}
+//       position="absolute"
+//       top={5}
+//       left={5}
+//       transform="translate(-50%, -50%)"
+//       width="40px"
+//       height="40px"
+//       borderRadius="50%"
+//       backgroundColor="white"
+//       animation={!prefersReducedMotion ? `${spiral} 1s linear infinite` : 'unset'}
+//       zIndex={999}
+//     >
+//     </Box>
+//   );
+// };
+
+const USCImage = () => {
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+  };
+
+  const uscLogo = '/assets/brand/usc-tag.png';
+
+  return (
+    <>
+    <Link target={'_blank'} href={'https://iovine-young.usc.edu/'}>
+      <Box width={'160px'}  onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}> 
+        <Image src={uscLogo} alt='USC IYA' />
+      </Box>
+      {/* <Dots isVisible={isHovered} /> */}
+    </Link>
+    </>
+  );
+};

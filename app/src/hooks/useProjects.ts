@@ -24,8 +24,14 @@ export function useProject() {
 }
 
 // Hook to fetch assets for a project
-export function useAssets(projectId: number) {
-  const { data: assets, isLoading, error } = useQuery<Asset[], Error>(['assets', projectId], () => getAssets(projectId));
+export function useAssets() {
+
+  const router = useRouter();
+  const { id } = router.query;
+
+  let project_id = parseInt(id as string);
+
+  const { data: assets, isLoading, error } = useQuery<Asset[], Error>(['assets', project_id], () => getAssets(project_id));
 
   return { assets, isLoading, error };
 }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Ref } from "react";
 import { FlexProps, Flex, useBreakpointValue } from "@chakra-ui/react";
 
 /* Rari Chakra-UI utils */
@@ -296,6 +296,7 @@ export const RowOrColumn = ({
  *    - useLockedViewHeight.ts
  *    - useIsMobile.ts
  *    - useSpacedLayout.ts
+ *    - useOnScreen.ts
  *
  ***************************************
  */
@@ -449,4 +450,32 @@ export function useSpacedLayout({
     spacing: new PixelMeasurement(spacing),
     childSizes: spacedChildren,
   };
+}
+
+/**
+ * useOnScreen.ts
+ * 
+ * Takes a ref and returns true if component is viewable on screen.
+ */
+export function useOnScreen(ref: any, rootMargin = '0px') {
+  const [isIntersecting, setIntersecting] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIntersecting(entry.isIntersecting);
+      },
+      {
+        rootMargin
+      }
+    );
+
+    if (ref.current) observer.observe(ref.current);
+
+    return () => {
+      if (ref.current) observer.unobserve(ref.current);
+    }
+  }, []);
+
+  return isIntersecting;
 }

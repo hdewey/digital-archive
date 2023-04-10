@@ -1,4 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
+import { useRouter } from 'next/router';
 import { getAssetsByProjectId, createAsset, updateAsset, deleteAsset } from '../../../lib/db';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -7,8 +8,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   switch (method) {
     case 'GET':
       try {
-        const projectId = Number(query.projectId);
-        const assets = await getAssetsByProjectId(projectId);
+        const { id } = query;
+        const assets = await getAssetsByProjectId(parseInt(id as string));
         res.status(200).json(assets);
       } catch (error) {
         console.error(error);
