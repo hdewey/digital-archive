@@ -19,7 +19,7 @@ const ProjectDetailsBio = (props: {project: Project | undefined }) => {
         mainAxisAlignment={'center'}
         crossAxisAlignment={'center'}
         width={'100%'}
-        height={'23vh'}
+        height={'35vh'}
         bgColor={'black.500'}
         userSelect={'none'}
       >

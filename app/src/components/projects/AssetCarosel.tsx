@@ -1,5 +1,6 @@
 import { useAssets } from "@/hooks/useProjects";
 import { Row } from "@/lib/chakraUtils";
+import { byteaToBase64 } from "@/utils/etc";
 import { Asset } from "@/utils/types";
 import { Box, Text, Center, Heading, Image, Spinner } from "@chakra-ui/react";
 import { ReactNode, useEffect, useMemo, useState } from "react";
@@ -22,7 +23,7 @@ const AssetCarousel = () => {
   }
 
   return (
-    <Box height="52vh" width="100%">
+    <Box height="60vh" width="100%" position={'relative'}>
         {assets ? assets.map((card, index) => (
 
           // Card wrapper to handle changes
@@ -41,7 +42,16 @@ const AssetCarousel = () => {
   );
 };
 
-export default AssetCarousel;
+
+const AssetCarouselWrapper = () => {
+  return (
+    <Box width="100%" display="flex" justifyContent="center" alignItems="center">
+      <AssetCarousel />
+    </Box>
+  )
+}
+
+export default AssetCarouselWrapper;
 
 const Card = ( props: { cardIndex: number, focusedIndex: number, asset?: Asset }) => {
 
@@ -60,7 +70,7 @@ const Card = ( props: { cardIndex: number, focusedIndex: number, asset?: Asset }
     display: Math.abs(distance) > 2 ? 'none' : 'unset',
     width: isCenter ? '60vw' : `${60 - Math.abs(distance) * 10}vw`,
     height: isCenter ? '50vh' : `${50 - Math.abs(distance) * 10}vh`,
-    top: isCenter ? '25vh' : `${25 + Math.abs(distance) * 5}vh`,
+    top: isCenter ? '0vh' : `${Math.abs(distance) * 5}vh`,
     left: !isCenter && distance < 0 ? `${20 - Math.abs(distance) * 4}vw` : isCenter ? '20vw' : 'unset',
     right: !isCenter && distance > 0 ? `${20 - Math.abs(distance) * 4}vw` : isCenter ? '20vw' : 'unset',
     zIndex: 999 - Math.abs(distance),
@@ -70,10 +80,9 @@ const Card = ( props: { cardIndex: number, focusedIndex: number, asset?: Asset }
 
   useMemo(() => {
     if (props.asset && props.asset.data && props.asset.type === 'jpg') {
-      const byteaArray = new Uint8Array(props.asset.data.data);
-      const blob = new Blob([byteaArray], { type: "image/jpeg" });
-      const imageUrl = URL.createObjectURL(blob);
-      setImage(imageUrl);
+
+      const base64Image = byteaToBase64(props.asset.data.data);
+      setImage(base64Image);
     }
   }, [ props.asset ])
 

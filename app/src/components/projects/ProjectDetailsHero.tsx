@@ -1,36 +1,60 @@
 import { useAssets } from "@/hooks/useProjects";
-import { Column } from "@/lib/chakraUtils";
-import { Box } from "@chakra-ui/react";
-import { useRouter } from "next/router";
-import { useEffect } from "react";
-import LazyShow from "../shared/LazyShow";
-import AssetCarousel from "./AssetCarosel";
+import { byteaToBase64 } from "@/utils/etc";
+import { Asset } from "@/utils/types";
+import { Box, Center, Spinner, Image } from "@chakra-ui/react";
+import { useEffect, useMemo, useState } from "react";
+import { ArchiveSpinner } from "../shared/Utils";
 
 const ProjectDetailsHero = () => {
 
-  const router = useRouter();
-  // const { id } = router.query;
-
-  // const { assets, isLoading, error } = useAssets();
+  const { assets, isLoading, error } = useAssets();
 
   return (
     <>
-      <Column
-        mainAxisAlignment={'center'}
-        crossAxisAlignment={'center'}
-        width={'100%'}
-        mb={10}
-        userSelect={'none'}
+      <Box
+        w="100vw"
+        h="70vh"
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+        position="relative"
+        bgColor={'white.500'}
       >
 
-        <Box width={'100vw'}>
-            <AssetCarousel />
-        </Box>
-
+        { isLoading && ( 
+          <ArchiveSpinner />
+        )}
         
-      </Column>
+        {
+          assets && assets[0] && (
+            <HeroContent asset={assets[0]} />
+          )
+        }
+    </Box>
     </>
   )
 }
 
 export default ProjectDetailsHero;
+
+const HeroContent = ({ asset }: { asset: Asset }) => {
+
+  const [ imageUrl, setImageUrl ] = useState<string | undefined>(undefined);
+
+  useMemo(() => {
+    if (asset.data && asset.type === 'jpg') {
+      const base64Image = byteaToBase64(asset.data.data);
+      setImageUrl(base64Image);
+    }
+  }, [ asset ])
+
+  return (
+    <Image
+      src={imageUrl}
+      maxW="100%"
+      maxH="100%"
+      objectFit="contain"
+      position="absolute"
+    />
+  )
+}

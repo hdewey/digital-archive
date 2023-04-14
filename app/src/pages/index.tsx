@@ -7,7 +7,8 @@ import { Box, Heading, Stack, Text } from "@chakra-ui/react";
 import ProjectGrid from "@/components/landing/ProjectGrid";
 import Footer from "@/components/shared/Footer";
 import Header from "@/components/shared/Header";
-import IconBackground from "@/components/shared/IconBackground";
+
+// import IconBackground from "@/components/shared/IconBackground";
 
 
 function ProjectsList() {
@@ -18,7 +19,7 @@ function ProjectsList() {
       {
         currentFrontEnd === 0 && (
           <>
-            <IconBackground />
+            {/* <IconBackground /> */}
             <Header>
               <Heading color={'white'}>{'Filters...'.toUpperCase()}</Heading>
             </Header>
