@@ -22,7 +22,7 @@ const ProjectDetailsHero = () => {
       >
 
         { isLoading && ( 
-          <ArchiveSpinner />
+          <Spinner boxSize={100} color={'brand.500'} />
         )}
         
         {

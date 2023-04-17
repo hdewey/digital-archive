@@ -10,7 +10,6 @@ import "@fontsource/londrina-solid/400.css";
 import "@fontsource/urbanist/200.css";
 
 import Layout from '@/components/shared/Layout';
-import LazyShow from '@/components/shared/LazyShow';
 
 function App({ Component, pageProps }: AppProps) {
   const queryClient = new QueryClient();

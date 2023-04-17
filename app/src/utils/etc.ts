@@ -1,3 +1,4 @@
+import { Project } from "./types";
 
 
 export const byteaToBase64 = (data: any) => {
@@ -7,3 +8,12 @@ export const byteaToBase64 = (data: any) => {
 
   return imageUrl;
 }
+
+export const EmptyProject: Project = {
+  id: NaN,
+  name: '',
+  description: '',
+  team_bio: '',
+  team_name: '',
+  profile_picture: '',
+};

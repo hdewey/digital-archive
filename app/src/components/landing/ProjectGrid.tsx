@@ -92,7 +92,7 @@ const ProjectItem = (props: {rows: number, columns: number, project: Project | n
                   <Link href={`/projects/${props.project.id}`}>
                     <Box w={'100%'} h={'100%'}>
                       <Center w={'100%'} h={'100%'}>
-                        <Heading color={'black.500'}>{ props.project.name }</Heading>
+                        <Heading color={'black.500'} textAlign={'center'}>{ props.project.name }</Heading>
                         {/* <Image boxSize={'80px'} src={'/assets/icons/iya/writing.png'} /> */}
                       </Center>
                     </Box>

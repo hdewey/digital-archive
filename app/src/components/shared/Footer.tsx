@@ -11,10 +11,11 @@ const Footer = () => {
         crossAxisAlignment={'center'}
         width={'100vw'}
         mt={'5vh'}
-        height={'5vh'}
+        height={'10vh'}
         bg={'brand.500'}
         zIndex={999}
       >
+        <Heading color={'black.500'}>footer</Heading>
       </Column>
     </>
   )

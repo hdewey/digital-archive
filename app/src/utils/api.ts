@@ -1,3 +1,4 @@
+import { EmptyProject } from './etc';
 import { Project, Asset } from './types';
 
 const API_BASE_URL = '/api'; // Our API routes are "local" in path to the client.
@@ -26,6 +27,7 @@ export async function getProjects(): Promise<Project[]> {
 
 // Functions to interact with the Projects API
 export async function getProject(project_id: number): Promise<Project> {
+  if (Number.isNaN(project_id)) return EmptyProject;
   const url = `${API_BASE_URL}/projects/${project_id}`;
   const project = await fetchData<Project>(url, 'GET');
   return project;
@@ -50,6 +52,8 @@ export async function deleteProject(projectId: number): Promise<void> {
 
 // Functions to interact with the Assets API
 export async function getAssets(projectId: number): Promise<Asset[]> {
+
+  if (Number.isNaN(projectId)) return [];
   const url = `${API_BASE_URL}/assets/${projectId}`;
   const assets = await fetchData<Asset[]>(url, 'GET');
   return assets;

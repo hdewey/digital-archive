@@ -19,9 +19,9 @@ const ProjectDetailsBio = (props: {project: Project | undefined }) => {
         mainAxisAlignment={'center'}
         crossAxisAlignment={'center'}
         width={'100%'}
-        height={'35vh'}
         bgColor={'black.500'}
         userSelect={'none'}
+        my={12}
       >
 
         <Row
@@ -44,12 +44,15 @@ const ProjectDetailsBio = (props: {project: Project | undefined }) => {
             }
           </Box>
 
-          <Stack spacing={1}
+          <Stack spacing={3}
             width={'80%'}
           >
-            <Heading color={'brand.500'} fontSize={42}>{props.project?.team_name}</Heading>
-            <Text color={'gray.500'} fontSize={18}>Cohort N</Text>
-            <Text color={'white.500'} fontSize={16} noOfLines={4} width={'60%'}>
+            <HStack>
+              <Heading color={'brand.500'} fontSize={42}>{props.project?.team_name}</Heading>
+              <Text color={'gray.500'} fontSize={18} pt={4}>Cohort N</Text>
+            </HStack>
+
+            <Text color={'white.500'} fontSize={18} noOfLines={4} width={'60%'}>
               {/* This project exemplifies the IYA mindset because it represents the messy, iterative process of product design and development. As innovative thinkers, we're often tasked to consider the user throughout our ideation processes, which drive the form and function of the projects we develop. */}
               {props.project?.team_bio}
             </Text>

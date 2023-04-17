@@ -44,6 +44,7 @@ const ProjectInfo = ({ name, year, teamName, className, desc }: { name: string, 
         height={'100%'}
         mt={20}
         spacing={1}
+        mb={20}
       >
         <Heading fontSize={48} color={'white.500'} pb={2}>{name}</Heading>
 
@@ -69,8 +70,6 @@ const ProjectProcess = () => {
 
   return (
     <>
-
-
       <AssetCarousel />
     </>
   )
