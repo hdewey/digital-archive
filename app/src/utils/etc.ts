@@ -9,6 +9,8 @@ export const byteaToBase64 = (data: any) => {
   return imageUrl;
 }
 
+// TODO: need to use this more.
+
 export const EmptyProject: Project = {
   id: NaN,
   name: '',

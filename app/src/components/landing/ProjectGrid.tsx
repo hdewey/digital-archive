@@ -2,7 +2,6 @@ import { useProject, useProjects } from "@/hooks/useProjects";
 import { Project } from "@/utils/types";
 import { Box, Center, Grid, GridItem, Heading, Image, Text } from "@chakra-ui/react";
 import Link from "next/link";
-import { useMemo, useState } from "react";
 
 import LazyShow from "@/components/shared/LazyShow";
 

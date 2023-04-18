@@ -14,7 +14,6 @@ const ProjectDetailsBio = (props: {project: Project | undefined }) => {
 
   return (
     <>
-
       <Column
         mainAxisAlignment={'center'}
         crossAxisAlignment={'center'}
@@ -38,7 +37,7 @@ const ProjectDetailsBio = (props: {project: Project | undefined }) => {
           >
             {
               avatarBin ? 
-                  <Image height={'120px'} borderRadius={'100%'} src={`data:image/*;base64,${avatarBin}`} />
+                  <Image height={'120px'} borderRadius={'100%'} alt='avatar' src={`data:image/*;base64,${avatarBin}`} />
                 :
                   <Box width={'100%'} height={'100%'}></Box>
             }

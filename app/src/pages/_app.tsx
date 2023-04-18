@@ -1,7 +1,7 @@
 import { AppProps } from 'next/app';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
-import { ChakraProvider, CSSReset, GlobalStyle } from '@chakra-ui/react';
+import { ChakraProvider } from '@chakra-ui/react';
 
 import themes from '@/theme';
 

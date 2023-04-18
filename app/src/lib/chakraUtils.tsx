@@ -452,30 +452,30 @@ export function useSpacedLayout({
   };
 }
 
-/**
- * useOnScreen.ts
- * 
- * Takes a ref and returns true if component is viewable on screen.
- */
-export function useOnScreen(ref: any, rootMargin = '0px') {
-  const [isIntersecting, setIntersecting] = useState(false);
+// /**
+//  * useOnScreen.ts
+//  * 
+//  * Takes a ref and returns true if component is viewable on screen.
+//  */
+// export function useOnScreen(ref: any, rootMargin = '0px') {
+//   const [isIntersecting, setIntersecting] = useState(false);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIntersecting(entry.isIntersecting);
-      },
-      {
-        rootMargin
-      }
-    );
+//   useEffect(() => {
+//     const observer = new IntersectionObserver(
+//       ([entry]) => {
+//         setIntersecting(entry.isIntersecting);
+//       },
+//       {
+//         rootMargin
+//       }
+//     );
 
-    if (ref.current) observer.observe(ref.current);
+//     if (ref.current) observer.observe(ref.current);
 
-    return () => {
-      if (ref.current) observer.unobserve(ref.current);
-    }
-  }, []);
+//     return () => {
+//       if (ref.current) observer.unobserve(ref.current);
+//     }
+//   }, []);
 
-  return isIntersecting;
-}
+//   return isIntersecting;
+// }
