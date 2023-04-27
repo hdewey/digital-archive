@@ -5,7 +5,7 @@ import { Box, Center, Spinner, Image } from "@chakra-ui/react";
 import { useEffect, useMemo, useState } from "react";
 import { ArchiveSpinner } from "../shared/Utils";
 
-const ProjectDetailsHero = () => {
+const ProjectDetailsHero = ({ imageSrc }: { imageSrc: string | undefined }) => {
 
   const { assets, isLoading, error } = useAssets();
 
@@ -26,8 +26,15 @@ const ProjectDetailsHero = () => {
         )}
         
         {
-          assets && assets[0] && (
-            <HeroContent asset={assets[0]} />
+          imageSrc && (
+            <Image
+              src={imageSrc}
+              maxW="100%"
+              maxH="100%"
+              objectFit="contain"
+              position="absolute"
+              alt={"final_product"}
+            />
           )
         }
     </Box>
@@ -36,25 +43,3 @@ const ProjectDetailsHero = () => {
 }
 
 export default ProjectDetailsHero;
-
-const HeroContent = ({ asset }: { asset: Asset }) => {
-
-  const [ imageUrl, setImageUrl ] = useState<string | undefined>(undefined);
-
-  useMemo(() => {
-    if (asset.data && asset.type === 'jpg') {
-      const base64Image = byteaToBase64(asset.data.data);
-      setImageUrl(base64Image);
-    }
-  }, [ asset ])
-
-  return (
-    <Image
-      src={imageUrl}
-      maxW="100%"
-      maxH="100%"
-      objectFit="contain"
-      position="absolute"
-    />
-  )
-}

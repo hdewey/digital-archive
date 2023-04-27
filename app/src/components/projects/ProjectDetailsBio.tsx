@@ -3,14 +3,7 @@ import { Project } from "@/utils/types";
 import { Box, Heading, HStack, Image, Stack, Text } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 
-const ProjectDetailsBio = (props: {project: Project | undefined }) => {
-
-  const [ avatarBin, setAvatarBin ] = useState<string | undefined>(undefined);
-  useEffect(() => {
-    if (props.project?.profile_picture) {
-      setAvatarBin(props.project.profile_picture);
-    }
-  }, [props.project] )
+const ProjectDetailsBio = ({ project }: { project: Project | undefined} ) => {
 
   return (
     <>
@@ -35,25 +28,26 @@ const ProjectDetailsBio = (props: {project: Project | undefined }) => {
             bgColor={'white.500'}
             borderRadius={'100%'}
           >
-            {
-              avatarBin ? 
-                  <Image height={'120px'} borderRadius={'100%'} alt='avatar' src={`data:image/*;base64,${avatarBin}`} />
-                :
-                  <Box width={'100%'} height={'100%'}></Box>
-            }
+          
+            <Image 
+              height={'120px'} 
+              borderRadius={'100%'} 
+              alt='avatar' 
+              src={project?.profile_picture ? project.profile_picture : '/assets/avatars/default_avatar.png'} 
+            />
+          
           </Box>
 
           <Stack spacing={3}
             width={'80%'}
           >
             <HStack>
-              <Heading color={'brand.500'} fontSize={42}>{props.project?.team_name}</Heading>
-              <Text color={'gray.500'} fontSize={18} pt={4}>Cohort N</Text>
+              <Heading color={'brand.500'} fontSize={42}>{project?.student_name}</Heading>
+              <Text color={'gray.500'} fontSize={18} pt={4}>{project?.student_year}</Text>
             </HStack>
 
             <Text color={'white.500'} fontSize={18} noOfLines={4} width={'60%'}>
-              {/* This project exemplifies the IYA mindset because it represents the messy, iterative process of product design and development. As innovative thinkers, we're often tasked to consider the user throughout our ideation processes, which drive the form and function of the projects we develop. */}
-              {props.project?.team_bio}
+              {project?.mindset}
             </Text>
           </Stack>
 

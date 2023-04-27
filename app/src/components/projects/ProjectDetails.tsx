@@ -13,12 +13,13 @@ function ProjectDetails() {
 
   return (
     <>
-      <ProjectDetailsHero  />
       
       {
         project && assets ? (
           <>
-            <ProjectDetailsInfo project={project} assets={assets} />
+            <ProjectDetailsHero imageSrc={project.final_product}  />
+
+            <ProjectDetailsInfo project={project} />
 
             <ProjectDetailsBio project={project} />
           </>

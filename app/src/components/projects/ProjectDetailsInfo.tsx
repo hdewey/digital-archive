@@ -2,10 +2,11 @@
 import { Column } from '@/lib/chakraUtils';
 import { Asset, Project } from '@/utils/types';
 import { Box, Heading, Stack, Text} from '@chakra-ui/react';
-import { ReactNode } from 'react';
 import AssetCarousel from './AssetCarosel';
 
-const ProjectDetailsInfo = ({ project, assets }: { project: Project, assets: Asset[] }) => {
+import TextWithLineBreaks from '@/utils/textBreaks';
+
+const ProjectDetailsInfo = ({ project }: { project: Project }) => {
 
   return (
     <Box bgColor={'white.500'}>
@@ -18,10 +19,10 @@ const ProjectDetailsInfo = ({ project, assets }: { project: Project, assets: Ass
       >
         
         <ProjectInfo
-          name={project.name}
-          year={'2023'}
-          teamName={project.team_name}
-          className={'ACAD-X'}
+          name={project.project_name}
+          year={project.semester_made}
+          teamName={project.student_name}
+          className={project.project_class}
           desc={project.description}
         />
 
@@ -51,15 +52,15 @@ const ProjectInfo = ({ name, year, teamName, className, desc }: { name: string, 
         <Text 
           fontSize={24}
           color={'brand.500'}
+          fontWeight={'bold'}
         >{teamName}, {year}</Text>
         <Text fontSize={22} color={'gray.500'}>{className}</Text>
 
         <Text fontSize={22} color={'white.500'} pt={4}>
-          {desc}
+          <TextWithLineBreaks text={desc as string} />
         </Text>
 
         <Heading fontSize={48}  pt={20}>The Process</Heading>
-        
 
       </Stack>
     </>

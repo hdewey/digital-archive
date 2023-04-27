@@ -55,14 +55,14 @@ export async function deleteProject(id: number): Promise<Project> {
 
 
 // get all assets (this shouldn't really ever be used)
-export async function getAllAssets(): Promise<Asset[]> {
-  const { rows } = await pool.query('SELECT * FROM tables.ssets');
-  return rows;
-}
+// export async function getAllAssets(): Promise<Asset[]> {
+//   const { rows } = await pool.query('SELECT * FROM tables.project_assets');
+//   return rows;
+// }
 
 // get all assets for a given project
 export async function getAssetsByProjectId(projectId: number): Promise<Asset[]> {
-  const { rows } = await pool.query('SELECT * FROM tables.assets WHERE project_id = $1', [projectId]);
+  const { rows } = await pool.query('SELECT * FROM tables.project_assets WHERE project_id = $1', [projectId]);
   return rows;
 }
 
@@ -74,7 +74,7 @@ export async function createAsset(
   data: Buffer
 ): Promise<Asset> {
   const { rows } = await pool.query(
-    'INSERT INTO tables.assets (project_id, type, increment, data) VALUES ($1, $2, $3, $4) RETURNING *',
+    'INSERT INTO tables.project_assets (project_id, type, increment, data) VALUES ($1, $2, $3, $4) RETURNING *',
     [projectId, type, increment, data]
   );
   return rows[0];
@@ -89,7 +89,7 @@ export async function updateAsset(
   data: Buffer
 ): Promise<Asset> {
   const { rows } = await pool.query(
-    'UPDATE tables.assets SET project_id = $1, type = $2, increment = $3, data = $4 WHERE id = $5 RETURNING *',
+    'UPDATE tables.project_assets SET project_id = $1, type = $2, increment = $3, data = $4 WHERE id = $5 RETURNING *',
     [projectId, type, increment, data, id]
   );
   return rows[0];

@@ -5,7 +5,6 @@ import { useMemo, useState } from "react";
 
 import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons'
 
-import { byteaToBase64 } from "@/utils/etc";
 import { Row } from "@/lib/chakraUtils";
 
 const AssetCarousel = () => {
@@ -51,8 +50,26 @@ const AssetCarousel = () => {
       height={'3vh'}
       mb={10}
     >
+
       <HStack>
-        {/* <Icon as={Arrow} w={10} h={10} /> */}
+
+      { assets && assets.length > 0 && (
+        <>
+          <ChevronLeftIcon boxSize={4} onClick={() => moveCenter(centerCard > 0 ? centerCard - 1 : centerCard)} />
+
+            { 
+              assets.map( (asset, index) => ( 
+                <Box key={index} borderRadius={'100%'} bgColor={index == centerCard ? 'white.500' : 'gray.500'} boxSize={2}>
+                </Box>
+              ))
+            }
+
+          <ChevronRightIcon boxSize={4} onClick={() => moveCenter(centerCard < assets.length - 1 ? centerCard + 1 : centerCard)} />
+        </>
+      )}
+
+      </HStack>
+      {/* <HStack>
         <ChevronLeftIcon boxSize={4} />
         {
           assets && assets.length && (
@@ -67,7 +84,7 @@ const AssetCarousel = () => {
 
         }
         <ChevronRightIcon boxSize={4} />
-      </HStack>
+      </HStack> */}
     </Row>
     
     </>
@@ -102,14 +119,6 @@ const Card = ( props: { cardIndex: number, focusedIndex: number, asset?: Asset }
     transition: `left ${transitionDuration}s ease-in-out, right ${transitionDuration}s ease-in-out`
   };
 
-  useMemo(() => {
-    if (props.asset && props.asset.data && props.asset.type === 'jpg') {
-
-      const base64Image = byteaToBase64(props.asset.data.data);
-      setImage(base64Image);
-    }
-  }, [ props.asset ])
-
   if ( Math.abs(props.cardIndex - props.focusedIndex) > 1) {
     return <></>;
   }
@@ -118,25 +127,20 @@ const Card = ( props: { cardIndex: number, focusedIndex: number, asset?: Asset }
     <Box
       bg={'white.500'}
       position={'absolute'}
-      // border={'1px black solid'}
       style={cardStyles}
       userSelect={'none'}
     >
       <Center w={'100%'} h={'100%'} >
         {
-          props.asset ? (
-            image ? 
+          props.asset ?
               <Image 
                 maxWidth={'100%'}
                 maxHeight={'100%'}
-                src={image}
+                src={props.asset?.asset_url}
                 alt="Converted Image" 
                 p={5}
               />
             : <Spinner boxSize={75} color={'black.500'} />
-          ): (
-            <Heading userSelect={'none'} color={'blackAlpha.200'} fontSize={'70px'}>{props.cardIndex}</Heading>
-          )
         }
       </Center>
     </Box>

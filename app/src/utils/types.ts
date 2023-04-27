@@ -1,18 +1,19 @@
 // projects table types
-export type Project = {
+export interface Project {
   id: number;
-  name: string;
+  project_name: string;
+  student_name: string;
+  project_class: string;
+  student_year: string;
+  semester_made: string;
   description: string;
-  team_bio: string;
-  team_name: string;
-  profile_picture: any,
-};
+  mindset: string;
+  final_product: string;
+  profile_picture: string;
+}
 
-// assets table types
-export type Asset = {
+export interface Asset {
   id: number;
   project_id: number;
-  type: string;
-  increment: number;
-  data: any,
-};
+  asset_url: string;
+}
