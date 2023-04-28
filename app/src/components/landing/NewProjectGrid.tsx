@@ -8,7 +8,6 @@ import LazyShow from "../shared/LazyShow";
 import Link from "next/link";
 
 const ProjectGrid = () => {
-
   
   const { projects, isLoading, error } = useProjects();
 
