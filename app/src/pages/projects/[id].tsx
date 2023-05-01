@@ -1,5 +1,6 @@
 
 import ProjectDetails from "@/components/projects/ProjectDetails";
+import BackButton from "@/components/shared/BackButton";
 import Footer from "@/components/shared/Footer";
 import Header from "@/components/shared/Header";
 
@@ -10,6 +11,8 @@ function ProjectDetailsPage() {
   return (
     <>
       <Header />
+
+      <BackButton />
 
       <ProjectDetails />
 

@@ -43,7 +43,7 @@ const ProjectInfo = ({ name, year, teamName, className, desc }: { name: string, 
       <Stack
         width={'85%'}
         height={'100%'}
-        mt={20}
+        mt={10}
         spacing={1}
         mb={20}
       >

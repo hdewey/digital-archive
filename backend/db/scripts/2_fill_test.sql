@@ -84,3 +84,22 @@ VALUES
   (3, '/assets/projects/ickrus_pitch/11.jpg'),
   (3, '/assets/projects/ickrus_pitch/12.jpg');
 
+-- BABY BARA PROJECT (id: 4)
+
+-- GHOST SHOE PROJECT (id: 5)
+
+-- KENNY KOALA PROJECT (id: 6)
+
+-- LADLE COASTER PROJECT (id: 7)
+
+-- IDEAL HOME PROJECT (id: 8)
+
+-- CASUAL HIKER PROJECT (id: 9)
+
+-- LIGHT BOX PROJECT (id: 10)
+
+-- RECOVERY BLADE PROJECT (id: 11)
+
+-- DOM JACKET PROJECT (id: 12)
+
+-- PEEK PROJECT (id: 13)

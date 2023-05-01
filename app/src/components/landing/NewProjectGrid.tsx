@@ -52,8 +52,6 @@ export default ProjectGrid;
 
 const ImageGrid = ({ shuffledProjects, shuffledSizes }: { shuffledProjects: Project[], shuffledSizes: string[]}) => {
 
-
-
   return (
     (
       shuffledProjects && (

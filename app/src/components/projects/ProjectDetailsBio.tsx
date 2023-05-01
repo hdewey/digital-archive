@@ -8,42 +8,40 @@ const ProjectDetailsBio = ({ project }: { project: Project | undefined} ) => {
   return (
     <>
       <Column
-        mainAxisAlignment={'center'}
+        mainAxisAlignment={'flex-start'}
         crossAxisAlignment={'center'}
         width={'100%'}
-        bgColor={'black.500'}
-        userSelect={'none'}
-        my={12}
+        py={{base: 10, xl: 20}}
       >
 
         <Row
-          mainAxisAlignment={'space-around'}
-          crossAxisAlignment={'center'}
-          width={'80vw'}
+          mainAxisAlignment={'center'}
+          crossAxisAlignment={'flex-start'}
+          width={'70vw'}
         >
-
           <Box
-            width={'120px'}
-            height={'120px'}
-            bgColor={'white.500'}
+            width={'140px'}
+            height={'140px'}
             borderRadius={'100%'}
+            m={5}
           >
             <Image 
-              height={'120px'} 
+              height={'140px'} 
               borderRadius={'100%'} 
               alt='avatar' 
               src={project?.profile_picture ? project.profile_picture : '/assets/avatars/default_avatar.png'} 
             />
           </Box>
-          <Stack spacing={3}
-            width={'80%'}
+          <Stack 
+            spacing={{base: 0, xl: 3}}
+            width={'75%'}
           >
             <HStack>
-              <Heading color={'brand.500'} fontSize={42}>{project?.student_name}</Heading>
+              <Heading color={'brand.500'} fontSize={42} py={1} m={0}>{project?.student_name}</Heading>
               <Text color={'gray.500'} fontSize={18} pt={4}>{project?.student_year}</Text>
             </HStack>
 
-            <Text color={'white.500'} fontSize={18} noOfLines={4} width={'60%'}>
+            <Text color={'white.500'} fontSize={18} p={0} m={0}>
               {project?.mindset}
             </Text>
           </Stack>
