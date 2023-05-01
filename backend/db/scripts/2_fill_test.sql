@@ -60,7 +60,7 @@ VALUES (
   'Ickrus', 
   'Kylee Pena', 
   'IDSN 599: Exponential Technologies',
-  'Masters Student ',
+  'Masters Student',
   'Fall 2022',
   read_text_file('/test/ickrus_pitch/desc.txt'), 
   read_text_file('/test/ickrus_pitch/mindset.txt'), 
@@ -83,3 +83,4 @@ VALUES
   (3, '/assets/projects/ickrus_pitch/10.jpg'),
   (3, '/assets/projects/ickrus_pitch/11.jpg'),
   (3, '/assets/projects/ickrus_pitch/12.jpg');
+

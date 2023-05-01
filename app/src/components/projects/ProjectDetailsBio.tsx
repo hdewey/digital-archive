@@ -28,16 +28,13 @@ const ProjectDetailsBio = ({ project }: { project: Project | undefined} ) => {
             bgColor={'white.500'}
             borderRadius={'100%'}
           >
-          
             <Image 
               height={'120px'} 
               borderRadius={'100%'} 
               alt='avatar' 
               src={project?.profile_picture ? project.profile_picture : '/assets/avatars/default_avatar.png'} 
             />
-          
           </Box>
-
           <Stack spacing={3}
             width={'80%'}
           >

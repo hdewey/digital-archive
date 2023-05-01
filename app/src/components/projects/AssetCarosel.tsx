@@ -26,67 +26,48 @@ const AssetCarousel = () => {
 
   return (
     <>
-    <Box height="65vh" width="100%" position={'relative'}>
-        {assets ? assets.map((card, index) => (
+      <Box height="65vh" width="100%" position={'relative'}>
+          {assets ? assets.map((card, index) => (
 
-          // Card wrapper to handle changes
-          <Box onClick={() => moveCenter(index)} key={index} >
-            {
-              assets[index] && <Card cardIndex={index} focusedIndex={centerCard} asset={assets[index]} /> 
-            }
-          </Box>
-        ))
-      : (
-        <Center w={'100%'} h={'100%'}>
-          <Spinner boxSize={'50px'} />
-        </Center>
-      )}
-    </Box>
+            // Card wrapper to handle changes
+            <Box onClick={() => moveCenter(index)} key={index} >
+              {
+                assets[index] && <Card cardIndex={index} focusedIndex={centerCard} asset={assets[index]} /> 
+              }
+            </Box>
+          ))
+        : (
+          <Center w={'100%'} h={'100%'}>
+            <Spinner boxSize={'50px'} />
+          </Center>
+        )}
+      </Box>
     
-    <Row
-      mainAxisAlignment={'center'}
-      crossAxisAlignment={'center'}
-      width={'100%'}
-      height={'3vh'}
-      mb={10}
-    >
+      <Row
+        mainAxisAlignment={'center'}
+        crossAxisAlignment={'center'}
+        width={'100%'}
+        height={'3vh'}
+        mb={10}
+      >
 
-      <HStack>
+        <HStack>
+          { assets && assets.length > 0 && (
+            <>
+              <ChevronLeftIcon boxSize={4} onClick={() => moveCenter(centerCard > 0 ? centerCard - 1 : centerCard)} />
 
-      { assets && assets.length > 0 && (
-        <>
-          <ChevronLeftIcon boxSize={4} onClick={() => moveCenter(centerCard > 0 ? centerCard - 1 : centerCard)} />
+                { 
+                  assets.map( (asset, index) => ( 
+                    <Box key={index} borderRadius={'100%'} bgColor={index == centerCard ? 'white.500' : 'gray.500'} boxSize={2}>
+                    </Box>
+                  ))
+                }
 
-            { 
-              assets.map( (asset, index) => ( 
-                <Box key={index} borderRadius={'100%'} bgColor={index == centerCard ? 'white.500' : 'gray.500'} boxSize={2}>
-                </Box>
-              ))
-            }
-
-          <ChevronRightIcon boxSize={4} onClick={() => moveCenter(centerCard < assets.length - 1 ? centerCard + 1 : centerCard)} />
-        </>
-      )}
-
-      </HStack>
-      {/* <HStack>
-        <ChevronLeftIcon boxSize={4} />
-        {
-          assets && assets.length && (
-            Array(assets.length).fill(0).map((_val, index) => {
-              return (
-                <Box key={index} borderRadius={'100%'} bgColor={index == centerCard ? 'white.500' : 'gray.500'} boxSize={2}>
-
-                </Box>
-              )
-            })
-          )
-
-        }
-        <ChevronRightIcon boxSize={4} />
-      </HStack> */}
-    </Row>
-    
+              <ChevronRightIcon boxSize={4} onClick={() => moveCenter(centerCard < assets.length - 1 ? centerCard + 1 : centerCard)} />
+            </>
+          )}
+        </HStack>
+      </Row>
     </>
   );
 };

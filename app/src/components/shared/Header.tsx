@@ -1,10 +1,9 @@
 import { Column, Row } from "@/lib/chakraUtils";
-import { Box, Heading, Text, Image, keyframes, usePrefersReducedMotion } from "@chakra-ui/react";
+import { Box, Heading, Text, Image } from "@chakra-ui/react";
 import Link from "next/link";
 import { ReactNode, useState } from "react";
 
-const Header = ({children}: {children: ReactNode}) => {
-
+const Header = () => {
   return (
     <>
       <Row
@@ -12,53 +11,45 @@ const Header = ({children}: {children: ReactNode}) => {
         mainAxisAlignment={'center'}
         crossAxisAlignment={'center'}
         width={'100vw'}
-        height={'15vh'}
-        mt={5}
-        mb={10}
+        
         zIndex={1}
+        my={[5]}
+        mt={[null, null, '20px', '20px', null]}
       >
         <Row 
           mainAxisAlignment={'space-between'}
           crossAxisAlignment={'center'}
-          width={'90vw'}
+          width={{ base: '90vw', xl: '80vw'}}
         >
           <Column
             mainAxisAlignment={'flex-start'}
             crossAxisAlignment={'flex-start'}
-            width={'100%'}
+            width={['50%', '80%', '80%', '80%', '50%']}
           >
             <Row
               mainAxisAlignment={'space-between'}
               crossAxisAlignment={'flex-end'}
-              // width={'58.1%'}
-              width={'470px'}
+              width={{ base: '76%', xl: '68%'}}
             > 
               <USCImage />
-          
-              <Box>
-                <Text textAlign={'right'} color={'white'} fontSize={'22px'} >{'Academy Projects'}</Text>
-              </Box>
+              
+              <Text textAlign={'right'} color={'white'} fontSize={'22px'}>{'Academy Projects'}</Text>
             </Row>
-            <Link href={'/'}>
-              <Heading textShadow={'2.83482px 2.83482px 9.92188px rgba(0, 0, 0, 0.25)'} fontSize={"90.7px"} lineHeight={"85%"} color={'#F0C433'}>{'The Archives'.toUpperCase()}</Heading>
-            </Link>
+            <Box m={0} p={0} height={'95px'}>
+              <Link href="/">
+                <Heading
+                  textShadow="2.83482px 2.83482px 9.92188px rgba(0, 0, 0, 0.25)"
+                  fontSize={"90.7px"}
+                  color="#F0C433"
+                  textDecoration={'none'}
+                  lineHeight={'91px'}
+                  my={0}
+                >
+                  {"Exhibiting IYA".toUpperCase()}
+                </Heading>
+              </Link>
+            </Box>
           </Column>
-
-        <Box 
-          // bg={'blue'}  
-          width={'100%'} 
-          height={'100%'}
-        >
-          <Row
-            mainAxisAlignment={'center'}
-            crossAxisAlignment={'center'}
-          >
-            {
-              children
-            }          
-          </Row>
-        </Box>
-
         </Row>
       </Row>
     </>
@@ -67,55 +58,89 @@ const Header = ({children}: {children: ReactNode}) => {
 
 export default Header;
 
-// const Dots = ( props: { isVisible: boolean }) => {
-//   const prefersReducedMotion = usePrefersReducedMotion();
-//   const spiral = keyframes`
-//     from {
-//       transform: rotate(0deg) translate(0, 0);
-//     }
-//     to {
-//       transform: rotate(360deg) translate(80px) rotate(-720deg);
-//     }
-//   `;
-//   return (
-//     <Box
-//       display={props.isVisible ? "block" : "none"}
-//       position="absolute"
-//       top={5}
-//       left={5}
-//       transform="translate(-50%, -50%)"
-//       width="40px"
-//       height="40px"
-//       borderRadius="50%"
-//       backgroundColor="white"
-//       animation={!prefersReducedMotion ? `${spiral} 1s linear infinite` : 'unset'}
-//       zIndex={999}
-//     >
-//     </Box>
-//   );
-// };
 
 const USCImage = () => {
-  const [isHovered, setIsHovered] = useState(false);
-
-  const handleMouseEnter = () => {
-    setIsHovered(true);
-  };
-
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-  };
-
   const uscLogo = '/assets/brand/usc-tag.png';
 
   return (
     <>
     <Link target={'_blank'} href={'https://iovine-young.usc.edu/'}>
-      <Box width={'160px'}  onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}> 
-        <Image src={uscLogo} alt='USC IYA' />
+      <Box width={'160px'} maxH={'160px'} > 
+        <Image src={uscLogo} width={'160px'} alt='USC IYA' />
       </Box>
-      {/* <Dots isVisible={isHovered} /> */}
     </Link>
     </>
   );
 };
+
+// import { Box, Heading, Text, Image } from "@chakra-ui/react";
+// import Link from "next/link";
+
+// const Header = () => {
+//   const uscLogo = "/assets/brand/usc-tag.png";
+
+//   return (
+//     <Box
+//       display="flex"
+//       justifyContent="center"
+//       width="100vw"
+//       mt={5}
+//       mb={10}
+//     >
+//       <Box
+//         display="flex"
+//         justifyContent="center"
+//         alignItems="center"
+//         flexDirection="column"
+//         width="80vw"
+//         maxWidth="1400px"
+//       >
+//         <Box
+//           display="flex"
+//           justifyContent="space-between"
+//           alignItems="center"
+//           width="100%"
+//         >
+//           <Box
+//             display="flex"
+//             justifyContent="space-between"
+//             alignItems="center"
+//             width="30%"
+//           >
+//             <Box width={{ base: "80px", lg: "160px" }}>
+//               <Link target="_blank" href="https://iovine-young.usc.edu/">
+//                 <Image src={uscLogo} alt="USC IYA" width="100%" height="auto" />
+//               </Link>
+//             </Box>
+//             <Text color="white" fontSize={{ base: "18px", lg: "22px" }}>
+//               Academy Projects
+//             </Text>
+//           </Box>
+          
+//         </Box>
+//         <Box width="100%" display={{ base: "flex", lg: "block" }}>
+//           <Box display="flex" alignItems="flex-end" width={{ base: "100%", lg: "auto" }}>
+//             <Link href={"/"}>
+//             <Heading
+//               textShadow="2.83482px 2.83482px 9.92188px rgba(0, 0, 0, 0.25)"
+//               fontSize={{ base: "40px", lg: "90.7px" }}
+//               lineHeight={{ base: "50px", lg: "91px" }}
+//               color="#F0C433"
+//               textDecoration="none"
+//               width={{ base: "100%", lg: "auto" }}
+//               my={0}
+//               mb={{ base: 4, lg: 0 }}
+//             >
+//               {"Exhibiting IYA".toUpperCase()}
+//             </Heading>
+//             </Link>
+
+//           </Box>
+//         </Box>
+       
+//     </Box>
+//   </Box>
+// );
+// };
+
+// export default Header

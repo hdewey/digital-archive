@@ -35,7 +35,7 @@ const ProjectGrid = () => {
       }
 
       {
-        isLoading && (
+        !shuffledProjects && (
           <Center 
             width={'80vw'}
             height={'75vh'}
@@ -52,11 +52,19 @@ export default ProjectGrid;
 
 const ImageGrid = ({ shuffledProjects, shuffledSizes }: { shuffledProjects: Project[], shuffledSizes: string[]}) => {
 
+
+
   return (
     (
       shuffledProjects && (
         <LazyShow grid>
-          <SimpleGrid columns={[2, 3, 4]} spacing={8} zIndex={999} minHeight={"75vh"} width={"80vw"}>
+          <SimpleGrid
+            templateColumns="repeat(auto-fit, minmax(200px, 1fr))"
+            spacing={8}
+            zIndex={999}
+            minHeight={"75vh"}
+            width={{base: '90vw', xl: '80vw'}}
+          >
             {shuffledProjects.map((project, index) => {
               const size = shuffledSizes[index % shuffledSizes.length];
               const gridColumn = size === "2fr" ? "span 2" : "span 1";
@@ -85,12 +93,11 @@ const ImageGrid = ({ shuffledProjects, shuffledSizes }: { shuffledProjects: Proj
                         src={project.final_product}
                         alt={project.project_name}
                         objectFit="contain"
-                        border="8px solid"
-                        borderColor="#333332"
+                        width="100%"
+                        height="100%"
                         borderRadius="md"
                         boxSizing="border-box"
                         cursor={'url("/assets/icons/extra/pointer.png") 12 12, auto;'}
-                        style={{ zoom: 0.5}}
                       />
                     </Link>
                   </Box>

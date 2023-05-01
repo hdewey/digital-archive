@@ -9,8 +9,7 @@ function ProjectDetailsPage() {
 
   return (
     <>
-      <Header>
-      </Header>
+      <Header />
 
       <ProjectDetails />
 

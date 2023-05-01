@@ -9,7 +9,7 @@ import TextWithLineBreaks from '@/utils/textBreaks';
 const ProjectDetailsInfo = ({ project }: { project: Project }) => {
 
   return (
-    <Box bgColor={'white.500'}>
+    <Box bgColor={'black.600'}>
       <Column
         mainAxisAlignment={'flex-start'}
         crossAxisAlignment={'center'}

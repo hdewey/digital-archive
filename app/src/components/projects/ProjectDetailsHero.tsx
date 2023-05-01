@@ -7,7 +7,7 @@ import { ArchiveSpinner } from "../shared/Utils";
 
 const ProjectDetailsHero = ({ imageSrc }: { imageSrc: string | undefined }) => {
 
-  const { assets, isLoading, error } = useAssets();
+  // const { assets, isLoading, error } = useAssets();
 
   return (
     <>
@@ -18,13 +18,8 @@ const ProjectDetailsHero = ({ imageSrc }: { imageSrc: string | undefined }) => {
         alignItems="center"
         justifyContent="center"
         position="relative"
-        bgColor={'white.500'}
-      >
-
-        { isLoading && ( 
-          <Spinner boxSize={100} color={'brand.500'} />
-        )}
-        
+        bgColor={'black.600'}
+      > 
         {
           imageSrc && (
             <Image

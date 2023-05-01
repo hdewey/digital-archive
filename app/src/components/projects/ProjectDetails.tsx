@@ -2,8 +2,9 @@ import ProjectDetailsBio from "@/components/projects/ProjectDetailsBio";
 import ProjectDetailsHero from "@/components/projects/ProjectDetailsHero";
 import ProjectDetailsInfo from "@/components/projects/ProjectDetailsInfo";
 
-import { ArchiveSpinner } from "@/components/shared/Utils";
+// import { ArchiveSpinner } from "@/components/shared/Utils";
 import { useAssets, useProject } from "@/hooks/useProjects";
+import { Center, Spinner } from "@chakra-ui/react";
 
 function ProjectDetails() {
 
@@ -25,7 +26,9 @@ function ProjectDetails() {
           </>
         ) 
         :
-          <ArchiveSpinner />
+          <Center h={'80vh'} w={'80vw'}>
+            <Spinner boxSize={100} color={'brand.500'} />
+          </Center>
       }
     </>
   );

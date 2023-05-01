@@ -3,7 +3,8 @@ export const colors = {
    500: "#F0C433" 
   },
   black: {
-    500: "#0C0C0C"
+    500: "#0C0C0C",
+    600: "#141414"
   },
   white: {
     500: "#D9D9D9",
