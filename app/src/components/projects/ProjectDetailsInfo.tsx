@@ -5,6 +5,7 @@ import { Box, Heading, Stack, Text} from '@chakra-ui/react';
 import AssetCarousel from './AssetCarosel';
 
 import TextWithLineBreaks from '@/utils/textBreaks';
+import { useAssets } from '@/hooks/useProjects';
 
 const ProjectDetailsInfo = ({ project }: { project: Project }) => {
 
@@ -16,6 +17,7 @@ const ProjectDetailsInfo = ({ project }: { project: Project }) => {
         width={'100vw'}
         bgColor={'#000000'}
         borderTopRadius={40}
+        pb={20}
       >
         
         <ProjectInfo
@@ -38,6 +40,9 @@ export default ProjectDetailsInfo;
 
 
 const ProjectInfo = ({ name, year, teamName, className, desc }: { name: string, year: string, teamName: string, className: string, desc: string}) => {
+
+  const { assets } = useAssets();
+
   return (
     <>
       <Stack
@@ -45,7 +50,6 @@ const ProjectInfo = ({ name, year, teamName, className, desc }: { name: string, 
         height={'100%'}
         mt={10}
         spacing={1}
-        mb={20}
       >
         <Heading fontSize={48} color={'white.500'} pb={2}>{name}</Heading>
 
@@ -60,7 +64,11 @@ const ProjectInfo = ({ name, year, teamName, className, desc }: { name: string, 
           <TextWithLineBreaks text={desc as string} />
         </Text>
 
-        <Heading fontSize={48}  pt={20}>The Process</Heading>
+        {
+          assets && assets.length > 0 && (
+            <Heading fontSize={48}  pt={20}>The Process</Heading>
+          )
+        }
 
       </Stack>
     </>

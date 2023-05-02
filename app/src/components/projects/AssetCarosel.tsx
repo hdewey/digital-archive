@@ -25,50 +25,45 @@ const AssetCarousel = () => {
   }
 
   return (
-    <>
-      <Box height="65vh" width="100%" position={'relative'}>
-          {assets ? assets.map((card, index) => (
-
-            // Card wrapper to handle changes
-            <Box onClick={() => moveCenter(index)} key={index} >
-              {
-                assets[index] && <Card cardIndex={index} focusedIndex={centerCard} asset={assets[index]} /> 
-              }
-            </Box>
-          ))
-        : (
-          <Center w={'100%'} h={'100%'}>
-            <Spinner boxSize={'50px'} />
-          </Center>
-        )}
-      </Box>
-    
-      <Row
-        mainAxisAlignment={'center'}
-        crossAxisAlignment={'center'}
-        width={'100%'}
-        height={'3vh'}
-        mb={10}
-      >
-
-        <HStack>
-          { assets && assets.length > 0 && (
-            <>
-              <ChevronLeftIcon boxSize={4} onClick={() => moveCenter(centerCard > 0 ? centerCard - 1 : centerCard)} />
-
-                { 
-                  assets.map( (asset, index) => ( 
-                    <Box key={index} borderRadius={'100%'} bgColor={index == centerCard ? 'white.500' : 'gray.500'} boxSize={2}>
-                    </Box>
-                  ))
+    assets && assets.length > 0 ? (
+      <>
+        <Box height="65vh" width="100%" position={'relative'}>
+          {
+            assets.map((card, index) => (
+              // Card wrapper to handle changes
+              <Box onClick={() => moveCenter(index)} key={index} >
+                {
+                  assets[index] && <Card cardIndex={index} focusedIndex={centerCard} asset={assets[index]} /> 
                 }
-
-              <ChevronRightIcon boxSize={4} onClick={() => moveCenter(centerCard < assets.length - 1 ? centerCard + 1 : centerCard)} />
-            </>
-          )}
-        </HStack>
-      </Row>
-    </>
+              </Box>
+            ))
+          }
+        </Box>
+        <Row
+          mainAxisAlignment={'center'}
+          crossAxisAlignment={'center'}
+          width={'100%'}
+          height={'3vh'}
+          mb={10}
+        >
+          <HStack>
+            { assets && assets.length > 0 && (
+              <>
+                <ChevronLeftIcon boxSize={4} onClick={() => moveCenter(centerCard > 0 ? centerCard - 1 : centerCard)} />
+                  { 
+                    // dots
+                    assets.map( (_asset, index) => ( 
+                      <Box key={index} borderRadius={'100%'} bgColor={index == centerCard ? 'white.500' : 'gray.500'} boxSize={2}>
+                      </Box>
+                    ))
+                  }
+                <ChevronRightIcon boxSize={4} onClick={() => moveCenter(centerCard < assets.length - 1 ? centerCard + 1 : centerCard)} />
+              </>
+            )}
+          </HStack>
+        </Row>
+      </>
+    ) : <></>
   );
 };
 
@@ -77,8 +72,6 @@ export default AssetCarousel;
 
 const Card = ( props: { cardIndex: number, focusedIndex: number, asset?: Asset }) => {
 
-  const [image, setImage] = useState<string | null>(null);
-
   const distance = props.cardIndex - props.focusedIndex;
 
   const isCenter = distance === 0;
@@ -86,9 +79,7 @@ const Card = ( props: { cardIndex: number, focusedIndex: number, asset?: Asset }
   const transitionDuration = 0.2; 
 
   const cardStyles = {
-    background: 'white.500',
-    // border: '3px solid rgba(255, 255, 255, 0.13)',
-    // borderRadius: '20px',
+    background: 'black.500',
     display: Math.abs(distance) > 1 ? 'none' : 'unset',
     width: isCenter ? '55vw' : `${55 - Math.abs(distance) * 20}vw`,
     height: isCenter ? '60vh' : `${60 - Math.abs(distance) * 20}vh`,
@@ -106,7 +97,7 @@ const Card = ( props: { cardIndex: number, focusedIndex: number, asset?: Asset }
 
   return (
     <Box
-      bg={'white.500'}
+      bg={'black.500'}
       position={'absolute'}
       style={cardStyles}
       userSelect={'none'}
@@ -121,7 +112,7 @@ const Card = ( props: { cardIndex: number, focusedIndex: number, asset?: Asset }
                 alt="Converted Image" 
                 p={5}
               />
-            : <Spinner boxSize={75} color={'black.500'} />
+            : <Spinner boxSize={75} color={'brand.500'} />
         }
       </Center>
     </Box>

@@ -1,0 +1,29 @@
+version: '3.8'
+services:
+  db:
+    build: ./backend/db
+    container_name: archive-db
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=archive
+    volumes:
+      - ./data:/data
+    networks:
+      - archive_net
+  app:
+    container_name: archive-app
+    build: ./app
+    ports:
+      - "3000:3000"
+    environment:
+      - DATABASE_URL=postgres://henry:archive@db:5432/archive
+    depends_on:
+      - db
+    networks:
+      - archive_net
+networks:
+  archive_net:
+    name: archive_net

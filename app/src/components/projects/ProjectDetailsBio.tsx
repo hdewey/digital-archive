@@ -35,6 +35,7 @@ const ProjectDetailsBio = ({ project }: { project: Project | undefined} ) => {
           <Stack 
             spacing={{base: 0, xl: 3}}
             width={'75%'}
+            pt={5}
           >
             <HStack>
               <Heading color={'brand.500'} fontSize={42} py={1} m={0}>{project?.student_name}</Heading>
